@@ -1,0 +1,139 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Bootsmann — Yacht Care Concierge, Marina del Rey',
+  description = 'One trusted contact for your boat. Weekly visits, photo reports after every call, and every repair coordinated with a single tap. Marina del Rey, Los Angeles.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#070f1c" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Fonts: preconnect for speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Inline critical: prevent flash of unstyled body bg -->
+    <style>
+      html { background: oklch(0.988 0.002 248); }
+    </style>
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Mark body ready after fonts settle to prevent FOIT during hero entrance
+      if (document.fonts) {
+        document.fonts.ready.then(() => {
+          document.body.classList.add('is-ready');
+        });
+      } else {
+        document.body.classList.add('is-ready');
+      }
+
+      // Nav scroll state
+      const nav = document.getElementById('site-nav');
+      if (nav) {
+        const onScroll = () => {
+          nav.classList.toggle('is-scrolled', window.scrollY > 48);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // Mobile nav toggle
+      const toggle = document.getElementById('nav-toggle');
+      const mobileMenu = document.getElementById('nav-mobile');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // Scroll reveal via IntersectionObserver
+      const revealElements = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && revealElements.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+        );
+        revealElements.forEach(el => observer.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+      }
+
+      // Contact form UX
+      const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+      const submitBtn = form?.querySelector('.form-submit') as HTMLButtonElement | null;
+      const successMsg = document.querySelector('.form-success') as HTMLElement | null;
+
+      if (form && submitBtn) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          submitBtn.classList.add('is-loading');
+          submitBtn.disabled = true;
+
+          try {
+            const data = new FormData(form);
+            const response = await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(data as any).toString(),
+            });
+
+            if (response.ok || response.status === 200 || response.redirected) {
+              form.style.display = 'none';
+              if (successMsg) {
+                successMsg.classList.add('is-visible');
+              }
+            } else {
+              throw new Error('Network response was not ok');
+            }
+          } catch {
+            submitBtn.classList.remove('is-loading');
+            submitBtn.disabled = false;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

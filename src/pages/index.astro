@@ -1,0 +1,438 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const HERO_IMG    = 'https://images.unsplash.com/photo-1699568290058-de7b14d26f37?auto=format&fit=crop&w=1400&q=85';
+const SERVICE_IMG = 'https://images.unsplash.com/photo-1512602110-67198e50f815?auto=format&fit=crop&w=900&q=80';
+const DECK_IMG    = 'https://images.unsplash.com/photo-1514480854622-ef7d8f2c572f?auto=format&fit=crop&w=900&q=80';
+const ROPE_IMG    = 'https://images.unsplash.com/photo-1586639137361-596e64b04dde?auto=format&fit=crop&w=900&q=80';
+---
+
+<Layout>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav class="nav" id="site-nav" aria-label="Site navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="Bootsmann — home">Bootsmann</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">Request Membership</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Navigation menu">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#membership">Membership</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn btn-primary">Request Membership</a>
+  </div>
+
+  <!-- ─── HERO (split) ─── -->
+  <section class="hero" id="hero" aria-labelledby="hero-heading">
+    <!-- Text column -->
+    <div class="hero-text-col">
+      <div class="hero-text-inner">
+        <p class="hero-eyebrow">Marina del Rey &middot; Los Angeles</p>
+        <h1 class="hero-heading" id="hero-heading">
+          Your boat,<br />attended.
+        </h1>
+        <p class="hero-sub">
+          Weekly visits, photo reports after every call, and every repair
+          coordinated through a single trusted contact.
+        </p>
+        <ul class="hero-bullets" role="list">
+          <li>Weekly or bi-weekly visits with documented inspection</li>
+          <li>Photo report in your inbox within 24 hours</li>
+          <li>Repairs coordinated end-to-end &mdash; one tap to approve</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Request Membership</a>
+          <a href="#services" class="btn btn-ghost">See services</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo column -->
+    <div class="hero-photo-col" aria-hidden="true">
+      <img
+        src={HERO_IMG}
+        alt="Sailboats and motor yachts moored at Marina del Rey on a calm morning"
+        width="1400" height="940"
+        loading="eager" fetchpriority="high" decoding="async"
+      />
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section class="section section-services" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <span class="section-label reveal">What we do</span>
+      <h2 class="section-heading reveal" id="services-heading" style="--i: 1">
+        Complete care, from one source.
+      </h2>
+
+      <div class="services-layout">
+        <div class="services-photo-col reveal">
+          <div class="services-photo">
+            <img
+              src={SERVICE_IMG}
+              alt="White sailing yacht moored at a dock in clear morning light"
+              loading="lazy" width="900" height="1200" decoding="async"
+            />
+          </div>
+          <p class="services-photo-caption">Marina del Rey, California</p>
+        </div>
+
+        <div class="services-list">
+          <div class="service-item reveal" style="--i: 0">
+            <div class="service-item-inner">
+              <div>
+                <h3 class="service-name">Maintenance Visits</h3>
+                <p class="service-desc">
+                  Weekly or bi-weekly, your Bootsmann goes aboard. Bilge, engine,
+                  deck, lines, teak, hull fittings &mdash; a full inspection every time.
+                  Cleaning included. Nothing overlooked, nothing assumed fine.
+                </p>
+              </div>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+          <div class="service-item reveal" style="--i: 1">
+            <div class="service-item-inner">
+              <div>
+                <h3 class="service-name">Photo Reports</h3>
+                <p class="service-desc">
+                  Within 24 hours of every visit: a written report with photographs.
+                  What was cleaned, what was found, what is fine, what needs attention.
+                  You are always informed. There are no surprises.
+                </p>
+              </div>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+          <div class="service-item reveal" style="--i: 2">
+            <div class="service-item-inner">
+              <div>
+                <h3 class="service-name">Repair Coordination</h3>
+                <p class="service-desc">
+                  If something needs fixing, you receive a quote. One tap approves it.
+                  We coordinate the contractor, supervise the work, send a photo when
+                  it is done. You are never chasing anyone.
+                </p>
+              </div>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+          <div class="service-item reveal" style="--i: 3">
+            <div class="service-item-inner">
+              <div>
+                <h3 class="service-name">Seasonal Care</h3>
+                <p class="service-desc">
+                  Summer preparation, winterization, haul-out coordination and
+                  supervision. The boat is ready when you are, every time.
+                </p>
+              </div>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="section section-how" id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <span class="section-label reveal">The process</span>
+      <h2 class="section-heading reveal" id="how-heading" style="--i: 1">Simple by design</h2>
+
+      <div class="how-steps">
+        <div class="how-step reveal" style="--i: 0">
+          <span class="how-step-step">Visit</span>
+          <h3 class="how-step-title">We go aboard</h3>
+          <p class="how-step-desc">
+            Full inspection, cleaning included. Bilge, engine, deck, lines, teak,
+            hardware. You don't need to be there.
+          </p>
+        </div>
+        <div class="how-step reveal" style="--i: 1">
+          <span class="how-step-step">Report</span>
+          <h3 class="how-step-title">You receive a report</h3>
+          <p class="how-step-desc">
+            Photos and written notes in your inbox within 24 hours of every visit.
+            Without exception.
+          </p>
+        </div>
+        <div class="how-step reveal" style="--i: 2">
+          <span class="how-step-step">Repairs</span>
+          <h3 class="how-step-title">One tap to approve</h3>
+          <p class="how-step-desc">
+            Quote arrives. You approve. We coordinate and supervise.
+            Completion photo when done.
+          </p>
+        </div>
+      </div>
+
+      <div class="report-card reveal">
+        <div class="report-photo">
+          <img
+            src={DECK_IMG}
+            alt="Teak handrail, life ring, and deck fittings on a well-maintained sailing vessel"
+            loading="lazy" width="900" height="675" decoding="async"
+          />
+        </div>
+        <div class="report-content">
+          <p class="report-date">Wednesday, 04 June 2025 &middot; Slip C-14, Marina del Rey</p>
+          <h3 class="report-title">Visit Report &mdash; example</h3>
+          <ul class="report-checklist" role="list">
+            <li class="report-check report-check--ok">Teak rail cleaned and UV-treated</li>
+            <li class="report-check report-check--ok">Running lights tested &mdash; all operational</li>
+            <li class="report-check report-check--ok">Engine oil and coolant at mark</li>
+            <li class="report-check report-check--ok">Bilge dry, float switch tested</li>
+            <li class="report-check report-check--ok">Dock lines &mdash; no chafe, re-tied</li>
+            <li class="report-check report-check--warn">Port genoa sheet showing wear at cleat. Quote attached.</li>
+          </ul>
+          <blockquote class="report-note">
+            <p>
+              "Everything ship-shape. The genoa sheet is showing age on the cleat run &mdash;
+              attached a quote from Pacific Marine. Ready to supervise on your approval."
+            </p>
+            <footer>— Thomas B., Bootsmann Marina del Rey</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="section section-testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <span class="section-label reveal">Owner reviews</span>
+      <h2 class="section-heading reveal" id="testimonials-heading" style="--i: 1">
+        What our members say
+      </h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial testimonial--featured reveal" style="--i: 0">
+          <blockquote>
+            <p class="testimonial-quote">
+              "I travel for work three weeks out of four. For six years, marine service in this area
+              was the same story: contractors who don't call back, invoices that don't match the quote,
+              nobody on site when something went wrong. Bootsmann changed that completely.
+              Thomas sends a photo report every week without fail. Last spring he caught a failing
+              raw water pump hose before it became a real problem. I've never had service like this."
+            </p>
+          </blockquote>
+          <div class="testimonial-source">
+            <p class="testimonial-name">Michael K.</p>
+            <p class="testimonial-detail">S/V Meridian &middot; 42ft Beneteau Oceanis &middot; Slip B-22</p>
+          </div>
+        </div>
+
+        <div class="testimonial reveal" style="--i: 1">
+          <blockquote>
+            <p class="testimonial-quote">
+              "The repair coordination alone is worth the membership. I used to spend hours chasing
+              contractors. Now I get a quote in the report, tap approve, and get a completion photo.
+              That's the whole interaction."
+            </p>
+          </blockquote>
+          <div class="testimonial-source">
+            <p class="testimonial-name">Sarah L.</p>
+            <p class="testimonial-detail">M/V Pacific Wind &middot; 38ft Meridian &middot; Slip F-08</p>
+          </div>
+        </div>
+
+        <div class="testimonial reveal" style="--i: 2">
+          <blockquote>
+            <p class="testimonial-quote">
+              "German precision is real. The checklist after each visit is more thorough than any
+              survey I've seen. The boat has never been in better condition."
+            </p>
+          </blockquote>
+          <div class="testimonial-source">
+            <p class="testimonial-name">James P.</p>
+            <p class="testimonial-detail">S/V Westward &middot; 36ft Hunter &middot; Slip D-14</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MEMBERSHIP ─── -->
+  <section class="section section-membership" id="membership" aria-labelledby="membership-heading">
+    <div class="container">
+      <span class="section-label reveal">Pricing</span>
+      <h2 class="section-heading reveal" id="membership-heading" style="--i: 1">Membership tiers</h2>
+      <p class="section-subheading reveal" style="--i: 2">
+        Monthly recurring. Cancel anytime. No enrollment fee.
+      </p>
+
+      <div class="tiers" role="list">
+        <div class="tier reveal" style="--i: 0" role="listitem">
+          <div class="tier-header">
+            <h3 class="tier-name">Essentials</h3>
+          </div>
+          <div class="tier-price">$150 <span>/ month</span></div>
+          <ul class="tier-features" role="list">
+            <li>Monthly visit and full inspection</li>
+            <li>Photo report within 24 hours</li>
+            <li>Bilge, engine, and deck check</li>
+            <li>Repair referrals on request</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Start here</a>
+        </div>
+
+        <div class="tier tier--featured reveal" style="--i: 1" role="listitem" aria-label="Recommended: Standard tier">
+          <div class="tier-header">
+            <h3 class="tier-name">Standard</h3>
+            <span class="tier-badge">Most popular</span>
+          </div>
+          <div class="tier-price">$350 <span>/ month</span></div>
+          <ul class="tier-features" role="list">
+            <li>Bi-weekly visits and full inspection</li>
+            <li>Photo reports after every visit</li>
+            <li>All repairs coordinated end-to-end</li>
+            <li>One-tap quote approval</li>
+            <li>Priority response within 24 hours</li>
+            <li>Seasonal prep included</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Request access</a>
+        </div>
+
+        <div class="tier reveal" style="--i: 2" role="listitem">
+          <div class="tier-header">
+            <h3 class="tier-name">Flagship</h3>
+          </div>
+          <div class="tier-price">From $2,000 <span>/ month</span></div>
+          <ul class="tier-features" role="list">
+            <li>Weekly visits, dedicated technician</li>
+            <li>Full concierge and crew coordination</li>
+            <li>Emergency response on call</li>
+            <li>Haul-out and refit management</li>
+            <li>Scope tailored by agreement</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Let's talk</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="section section-about" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text-col">
+          <span class="section-label reveal">The team</span>
+          <h2 class="section-heading reveal" id="about-heading" style="--i: 1">
+            Two Germans in Los Angeles
+          </h2>
+          <div class="about-text">
+            <p class="reveal" style="--i: 2">
+              Lennart and Jörg both left Germany for Los Angeles and found the same thing:
+              a city with extraordinary boats and ordinary service. Contractors who don't
+              show up. Reports that never arrive. Work that costs twice the quote.
+            </p>
+            <p class="reveal" style="--i: 3">
+              Back home, <em>Gründlichkeit</em> &mdash; thoroughness, the commitment to
+              doing something properly or not at all &mdash; is not a selling point.
+              It is simply how things are done. Bootsmann exists to bring that standard
+              to Marina del Rey.
+            </p>
+            <blockquote class="about-quote reveal" style="--i: 3">
+              <p>"We didn't build this because we love boats. We built it because we couldn't stand watching good boats be neglected."</p>
+              <footer>— Lennart &amp; Jörg, Co-founders</footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="about-photo-col reveal" style="--i: 1" aria-hidden="true">
+          <img
+            src={ROPE_IMG}
+            alt="Black mooring rope on weathered teak deck planks at a marina"
+            loading="lazy" width="900" height="1200" decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="section section-contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container-narrow">
+      <span class="section-label reveal">Get started</span>
+      <h2 class="section-heading reveal" id="contact-heading" style="--i: 1">Request membership</h2>
+      <p class="section-subheading reveal" style="--i: 2">
+        We respond within one business day. No sales calls &mdash;
+        just a short conversation about your boat.
+      </p>
+
+      <form
+        class="contact-form reveal"
+        style="--i: 3"
+        name="membership"
+        method="POST"
+        data-netlify="true"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="membership" />
+        <div class="form-row">
+          <div class="form-field">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first-name" autocomplete="given-name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="boat">Boat name and length</label>
+          <input type="text" id="boat" name="boat" placeholder="e.g. Meridian &middot; 42ft Beneteau" />
+        </div>
+        <div class="form-field">
+          <label for="message">Anything we should know?</label>
+          <input type="text" id="message" name="message" placeholder="Slip number, current concerns, preferred start date&hellip;" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg form-submit">
+          <span class="submit-label">Send inquiry</span>
+          <span class="submit-loading" aria-hidden="true">Sending&hellip;</span>
+        </button>
+      </form>
+
+      <div class="form-success" role="status" aria-live="polite">
+        Thank you. We'll be in touch within one business day.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Bootsmann</span>
+        <p class="footer-address">Marina del Rey, Los Angeles, CA 90292</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#membership">Membership</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 Bootsmann. All rights reserved.</p>
+    </div>
+  </footer>
+
+</Layout>
